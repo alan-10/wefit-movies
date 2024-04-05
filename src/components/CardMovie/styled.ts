@@ -16,6 +16,18 @@ export const Content = styled.div`
 
  
    color: black;
+
+
+   @media (max-width: 1170px) {
+    width: auto;
+    
+  }
+
+  @media (max-width: 700px) {
+    width: 90%;
+    
+  }
+
   
 `;
 
@@ -24,6 +36,12 @@ export const ImgMovie = styled.img`
   width: 150px;
   height: 200px;
   margin: auto;
+
+  @media (max-width: 1170px) {
+    width: 100px;
+  height: 150px;
+    
+  }
 `;
 
 
@@ -43,14 +61,13 @@ export const Price = styled.p`
 `;
 
 interface PropsGlobalStyle {
-  green: boolean
+  green?: boolean
 }
 
 
 export const ButtonAddToCard = styled.button<PropsGlobalStyle>`
-  /* background-color: #009EDD; */
   
-  background-color: ${(props: PropsGlobalStyle) => props.green ? '#039B00;' : '#009EDD;'};
+  background-color: ${(props: PropsGlobalStyle) => props?.green ? '#039B00;' : '#009EDD;'};
   height: 40px;
   min-width: 320px;
   border-radius: 4px;
@@ -64,19 +81,22 @@ export const ButtonAddToCard = styled.button<PropsGlobalStyle>`
   justify-content: center;
   cursor: pointer;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1300px) {
     grid-template-columns: repeat(2, 1fr); 
 
     height: 30px;
-    min-width: 300px;
-    padding: 15px;
+    width: 250px;
+   
   }
 
-  @media (max-width: 1050px) {
+  @media (max-width: 700px) {
     grid-template-columns: repeat(2, 1fr); 
 
     height: 25px;
-    min-width: 280px;
-    padding: 15px;
+    width: 10%;
+    width: 80%;
+    margin: 0 20px 0 20px;
+    /* padding: 0; */
+      /* padding: 5px; */
   }
 `;

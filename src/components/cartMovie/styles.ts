@@ -11,8 +11,7 @@ export const Content = styled.div`
 
 
 export const Table = styled.table`
-/* background-color: red; */
-  /* margin-top: 1rem; */
+
   width: 100%;
   border-top: 0 ;
   border-bottom: 1px solid #999999 ;
@@ -21,7 +20,7 @@ export const Table = styled.table`
 
 
   >tr, th, td {
-    width: 16rem;
+    width: 10rem;
   }
 
 
@@ -40,13 +39,18 @@ export const Table = styled.table`
 
   @media (max-width: 700px) {
 
-    >tr, th, td {
-    width: 10rem;
-  }
+    >tr > th {
+      display: none;
+    }
+
+    >tr > td{
+      /* display:inline-block ; */
+      /* align-items: end; */
+      /* background-color: red; */
+    }
+    
     
   }
-
-
 
 `
 
@@ -73,7 +77,6 @@ export const InfoMovie = styled.div`
 
   @media (max-width: 700px) {
     display: grid;
-    /* text-align: left; */
     justify-content: flex-start;
   }
 
@@ -109,7 +112,6 @@ export const TDImage = styled.td`
 
   display: flex;
   text-align: left;
-
 
 }
 

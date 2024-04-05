@@ -6,6 +6,7 @@ import {
 
 import { Home } from '../pages/home'
 import { Cart } from '../pages/cart'
+import { PurchatFinish } from '../pages/purchaseFihish'
 
 
 
@@ -17,6 +18,10 @@ const routers = createBrowserRouter([
   {
     path: "/carts",
     element: <Cart/>,
+  },
+  {
+    path: "/purchetFinish",
+    element: <PurchatFinish/>,
   },
 ]);
 

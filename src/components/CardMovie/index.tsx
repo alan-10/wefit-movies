@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { MdOutlineAddShoppingCart } from "react-icons/md";
+import { useMyContext } from '../../content'
 
 import { Content, ButtonAddToCard, Name, ImgMovie, Price } from './styled'
 
@@ -20,6 +21,8 @@ interface CardSaved {
 
 export const CardMovie = ({ movieName, image, price, id }: CardMovieProps) => {
 
+  const myContext = useMyContext() 
+
   const keyLocalStorage = `${movieName}-${id}`;
 
   const [countAddedCard, setCountAddedCard] = useState<number>(() => {
@@ -28,7 +31,7 @@ export const CardMovie = ({ movieName, image, price, id }: CardMovieProps) => {
 
     const movies = moviesStorage && JSON.parse(moviesStorage) || [] as CardSaved[]
 
-    const selectedmovie: CardSaved =  movies.find((movie: CardSaved) =>  movie.idMovie === id);
+    const selectedmovie: CardSaved = movies.find((movie: CardSaved) => movie.idMovie === id);
 
     return selectedmovie?.count || 0;
 
@@ -41,7 +44,7 @@ export const CardMovie = ({ movieName, image, price, id }: CardMovieProps) => {
 
     const storeCard: CardSaved = {
       idMovie: id,
-      name:movieName,
+      name: movieName,
       count: countAddedCard + 1,
       image: image,
       price: price
@@ -53,28 +56,29 @@ export const CardMovie = ({ movieName, image, price, id }: CardMovieProps) => {
 
     const items: CardSaved[] = itemSaved && JSON.parse(itemSaved) || []
 
-    const arr:CardSaved[] = [];
+    const arr: CardSaved[] = [];
 
     arr.push(...items)
 
-    const arr2 = arr.flat(Infinity) as CardSaved[] 
+    const arr2 = arr.flat(Infinity) as CardSaved[]
 
-    if(arr2.length < 1){
+    if (arr2.length < 1) {
       arr.push(storeCard)
     }
 
-   const index =  arr.findIndex((item) =>item.idMovie === storeCard.idMovie)
+    const index = arr.findIndex((item) => item.idMovie === storeCard.idMovie)
 
 
-   if(index === -1 ){
-    arr.push(storeCard)
-   }
+    if (index === -1) {
+      arr.push(storeCard)
+    }
 
-  if(index !== -1 ) {
-    arr[index] = storeCard   
-  }
+    if (index !== -1) {
+      arr[index] = storeCard
+    }
 
     localStorage.setItem('myMovies', JSON.stringify(arr.flat(Infinity)));
+    myContext?.updatecount(arr.flat(Infinity))
 
   }
 
@@ -87,8 +91,8 @@ export const CardMovie = ({ movieName, image, price, id }: CardMovieProps) => {
       <Name>{movieName}</Name>
       <Price> R$ {price}</Price>
 
-      <ButtonAddToCard onClick={() => addMovieToCard(id)} type='button' green={(countAddedCard > 0)}>
-        <MdOutlineAddShoppingCart /> &nbsp;&nbsp; {countAddedCard} ADICIONAR AO CARRINHO
+      <ButtonAddToCard onClick={() => addMovieToCard(id)} type='button' green={!!(countAddedCard > 0)}>
+        <MdOutlineAddShoppingCart />  {countAddedCard} ADICIONAR AO CARRINHO
       </ButtonAddToCard>
 
 

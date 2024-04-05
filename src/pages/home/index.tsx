@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Header } from '../../components/header'
 import { CardMovie } from '../../components/CardMovie'
 import { InputFindMovie, Content } from './style'
+import { EmpytMovies } from '../../components/emptyMovies'
 import { api } from '../../api/api'
 
 interface MoviesProperties {
@@ -27,8 +28,6 @@ export function Home() {
 
 
   function filterMovie(e: React.ChangeEvent<HTMLInputElement>) {
-
-
 
     setValueInputMovie(e.target.value)
 
@@ -57,16 +56,22 @@ export function Home() {
 
 
 
+
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <div style={{ width: '100%', minHeight: '100vh' }}>
       <Header />
 
-      <div style={{ display: 'flex' }}>
+      {(!moviesCoppy ) && <EmpytMovies/> }
+
+      {moviesCoppy && moviesCoppy?.length > 1  && (
+        <div style={{ display: 'flex' }}>
         <InputFindMovie onChange={e => filterMovie(e)} value={valueInputMovie} placeholder='Buscar filme pelo nome' />
       </div>
+      )}
 
+    
 
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'center',  }}>
         {movies && (
 
           <Content>

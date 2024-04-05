@@ -4,9 +4,8 @@ import { Router } from './routers/routes'
 
 function App() {
   return (
-  <div style={{width: '100%', backgroundColor: '#2F2E41'}}>
+  <div style={{width: '100%', height:'100%', backgroundColor: '#2F2E41'}}>
      <div id='div'>
-    
     <Router />
   </div>
   </div>

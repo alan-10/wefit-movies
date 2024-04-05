@@ -11,10 +11,6 @@ export const Head = styled.header`
   padding: 12px;
 
 
-  /* @media (max-width: 770px) {
-    height: 56px;
-    background-color: red;
-  } */
 `;
 
 export const Content = styled.div`
@@ -38,5 +34,16 @@ export const Text = styled.p`
   color: white;
   text-decoration: none;
  
-  
+`;
+
+
+export const TextMycar = styled.p`
+color: white;
+text-decoration: none;
+
+
+@media (max-width: 700px) {
+    display: none;
+  }
+
 `;

@@ -1,11 +1,18 @@
 
 import Card from '../../../public/card.png'
 import { Link } from 'react-router-dom'
-import { Head, Content, ItemCard, Img, Text } from './styles'
+import { Head, Content, ItemCard, Img, Text, TextMycar } from './styles'
+
+import { useMyContext  } from '../../content'
 
 
 
 export const Header = () => {
+
+  const silva = useMyContext()
+
+  console.log('ssilva', silva?.getCountItems());
+  
   return (
     <Head>
       <Content>
@@ -24,10 +31,10 @@ export const Header = () => {
         <Link to={'/carts'}>
           <div>
             < ItemCard>
-            <Text>Meu Carrinho</Text>
+            <TextMycar>Meu Carrinho</TextMycar>
             </ItemCard>
             <ItemCard>
-              <Text>0 intens</Text>
+              <Text>{silva?.getCountItems()} intens</Text>
               </ItemCard>
           </div>
         </Link>

@@ -2,6 +2,8 @@ import { MdDelete } from "react-icons/md";
 import { MdAddCircleOutline } from "react-icons/md";
 import { MdRemoveCircleOutline } from "react-icons/md";
 
+import { useMyContext } from '../../content'
+
 
 import {
   Content,
@@ -37,6 +39,8 @@ export const CartMovie = (data: CartMoviesProsp) => {
 
   const keyMovieLocalStorage = 'myMovies'
 
+  const myContext = useMyContext()
+
   function deleteMovieCArt(id: string) {
     const savedMovie = localStorage.getItem(keyMovieLocalStorage);
 
@@ -45,6 +49,8 @@ export const CartMovie = (data: CartMoviesProsp) => {
     const movieFiltrade: CartMoviesProsp[] = savedMoviesArray.filter(movie => movie.idMovie !== id);
 
     localStorage.setItem(keyMovieLocalStorage, JSON.stringify(movieFiltrade))
+
+    myContext?.updatecount(movieFiltrade)
 
     data.setMoviesCallback(movieFiltrade)
 
@@ -72,6 +78,8 @@ export const CartMovie = (data: CartMoviesProsp) => {
 
     localStorage.setItem(keyMovieLocalStorage, JSON.stringify(savedMoviesArray))
 
+    myContext?.updatecount(savedMoviesArray)
+
     data.setMoviesCallback(savedMoviesArray)
 
   }
@@ -96,9 +104,13 @@ export const CartMovie = (data: CartMoviesProsp) => {
 
     savedMoviesArray[currentMuvieIndex] = movieFiltrade
 
+
+
     localStorage.setItem(keyMovieLocalStorage, JSON.stringify(savedMoviesArray))
 
     data.setMoviesCallback(savedMoviesArray)
+
+    myContext?.updatecount(savedMoviesArray)
 
   }
 
