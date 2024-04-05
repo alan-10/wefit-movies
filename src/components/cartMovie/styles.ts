@@ -10,56 +10,6 @@ export const Content = styled.div`
 `
 
 
-export const Table = styled.table`
-
-  width: 100%;
-  border-top: 0 ;
-  border-bottom: 1px solid #999999 ;
-  
-  padding-bottom: 1.5rem;
-
-
-  >tr, th, td {
-    width: 10rem;
-  }
-
-
-
-  > tr >  th{
-      text-align: left;
-      color: #999999;
-      
-  }
-
-  > tr > td {
-    padding-top: 30px;
-    font-weight: bold;
-    font-size: 14px;
-  }
-
-  @media (max-width: 700px) {
-
-    >tr > th {
-      display: none;
-    }
-
-    >tr > td{
-      /* display:inline-block ; */
-      /* align-items: end; */
-      /* background-color: red; */
-    }
-    
-    
-  }
-
-`
-
-
-
-export const TdDelete = styled.td`
-  text-align: right;
-`;
-
 
 export const Img = styled.img`
 
@@ -105,7 +55,7 @@ export const ButtonDelete = styled.button`
 
 
 
-export const TDImage = styled.td`
+export const TDImage = styled.div`
 
 @media (max-width: 700px) {
 
@@ -114,5 +64,50 @@ export const TDImage = styled.td`
   text-align: left;
 
 }
+
+`;
+
+
+// #####
+
+
+export const Container = styled.div`
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
+   grid-template-rows: 100px 100px;
+
+   grid-template-areas: "a b c d"
+                        "e f g h" ;
+
+   > div  {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+   }
+
+
+   @media (max-width: 700px) {
+    grid-template-areas: "e e g h"
+                        /* "e e g h" */
+                        "f f c c" 
+                        }
+`;
+
+
+
+export const SubTitle = styled.div`
+
+    @media (max-width: 700px) {
+      grid-template-columns: 1fr 1fr;
+       > p {
+        display: none;
+       }
+    }
+
+`;
+
+
+export const SubTotal= styled.div`
+
 
 `;

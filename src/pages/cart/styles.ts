@@ -82,8 +82,8 @@ export const BuyMovies = styled.button`
 
   @media (max-width: 700px) {
     width:100%;
-    padding: .1rem;
-    margin-top: 0.3rem;
+    padding: .2rem;
+    margin-top: 0.5rem;
     /* background-color:red; */
   }
 `;
